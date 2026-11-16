@@ -1,0 +1,14 @@
+services:
+  sms-gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sms-gateway-app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      # Persists SQLite messages and delivery logs across container rebuilds
+      - ./data:/app/data
