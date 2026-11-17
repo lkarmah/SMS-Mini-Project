@@ -1,5 +1,5 @@
 
-name: SMS Mini Project Scheduled Task
+name: sms-cron
 
 on:
   schedule:
