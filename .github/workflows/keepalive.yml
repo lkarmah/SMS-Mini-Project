@@ -1,5 +1,5 @@
 
-name: sms-cron
+name: SMS Keep Alive
 
 on:
   schedule:
