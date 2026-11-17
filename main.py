@@ -26,12 +26,6 @@ NALO_ENDPOINT = os.getenv(
 ).strip()
 AUTO_RECONCILE = os.getenv("AUTO_RECONCILE", "true").lower() in ("true", "1", "yes")
 
-app = FastAPI()
-
-@app.get("/api/health")
-def health():
-    return{"status": "ok"}
-
 # ==========================================
 # 2. Database Models (SQLite / PostgreSQL)
 # ==========================================
@@ -91,6 +85,9 @@ app = FastAPI(
     description="SMS platform for dispatching messages and handling delivery reports via Nalo Solutions.",
     version="1.1.0"
 )
+@app.get("/api/health")
+def health():
+    return{"status": "ok"}
 
 app.add_middleware(
     CORSMiddleware,
