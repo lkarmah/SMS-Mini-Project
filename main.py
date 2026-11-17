@@ -11,13 +11,6 @@ from pydantic import BaseModel, Field
 from sqlalchemy import Column, Integer, String, Text, create_engine, desc
 from sqlalchemy.orm import declarative_base, sessionmaker, Session
 
-
-app = FastAPI()
-
-@app.get("/health")
-def health():
-    return{"status": "ok"}
-
 load_dotenv()
 
 # ==========================================
@@ -32,6 +25,12 @@ NALO_ENDPOINT = os.getenv(
     os.getenv("NALO_API_URL", "https://sms.nalosolutions.com/smsbackend/clientapi/Resl_Nalo/send-message/")
 ).strip()
 AUTO_RECONCILE = os.getenv("AUTO_RECONCILE", "true").lower() in ("true", "1", "yes")
+
+app = FastAPI()
+
+@app.get("/health")
+def health():
+    return{"status": "ok"}
 
 # ==========================================
 # 2. Database Models (SQLite / PostgreSQL)
