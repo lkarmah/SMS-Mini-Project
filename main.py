@@ -11,6 +11,14 @@ from pydantic import BaseModel, Field
 from sqlalchemy import Column, Integer, String, Text, create_engine, desc
 from sqlalchemy.orm import declarative_base, sessionmaker, Session
 
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/health")
+def health():
+    return{"status": "ok"}
+
 load_dotenv()
 
 # ==========================================
