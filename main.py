@@ -28,7 +28,7 @@ AUTO_RECONCILE = os.getenv("AUTO_RECONCILE", "true").lower() in ("true", "1", "y
 
 app = FastAPI()
 
-@app.get("/health")
+@app.get("/api/health")
 def health():
     return{"status": "ok"}
 
